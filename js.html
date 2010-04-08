@@ -1,0 +1,74 @@
+<html> <head><title>JS-Shell</title>
+<script>
+var count = 0;//TODO should not be (easily) overwritable
+var lineWidth = 80;
+
+function createInputLine(num){
+	var li = document.createElement("li");
+	var span = document.createElement("span");
+	span.id = "span"+num;
+	var prompt = document.createTextNode("> ");
+	var input = document.createElement("input");
+	input.id = "inp";
+	var input_size = document.createAttribute("size");
+	input_size.nodeValue = lineWidth;
+	input.setAttributeNode(input_size);
+	span.appendChild(prompt);
+	span.appendChild(input);
+	li.appendChild(span);
+	return li;
+}
+
+function addInputLine(){
+	count++;
+	document.getElementById("cmd_history_list").appendChild(createInputLine(count)) ;
+}
+
+function evaluate(command){
+	var result = "";
+	try{
+		result += eval(command);
+	}catch(ex){
+		result += "<b>Error</b>: ";
+		for (var fieldName in ex) {
+			result += fieldName;
+			result += ": </i>";
+			result += ex[fieldName];
+			result += " <i>";
+		}
+	}
+	return result;
+}
+
+function process(){
+	var command = document.getElementById("inp").value;
+	document.getElementById("span"+count).innerHTML = 
+		"<b>" + command+"</b><br />--&gt;&nbsp;<i>"+evaluate(command)+"</i>";
+	addInputLine();
+}
+
+function showElem(elem){
+	var s = "";
+	if(elem){
+		s += elem;
+		s += ", with members: "; 
+		for (var fieldName in elem) {
+			s += " "+fieldName;
+		}
+	}
+	return s;
+}
+
+function showElem4id(id){
+	return showElem(document.getElementById(id));
+}
+
+</script>
+
+</head>
+<body onload="javascript:addInputLine()">
+	<form action="javascript:process()">
+		<ol id="cmd_history_list"></ol>
+	</form>
+</body>
+</html>

@@ -1,4 +1,16 @@
 <html> <head><title>JS-Shell</title>
+
+<!--
+Thoughts:
+
+The interpreting code might be seperated from what the user can easily do.
+
+Some help?
+
+Some shell like commands to satisfy some of the expectations for the name. (cf unixkcd?)
+
+-->
+
 <script>
 var count = 0;//TODO should not be (easily) overwritable
 var lineWidth = 80;
@@ -40,10 +52,14 @@ function evaluate(command){
 	return result;
 }
 
+function refill(command){
+	document.getElementById("inp").value=command;
+}
+
 function process(){
 	var command = document.getElementById("inp").value;
 	document.getElementById("span"+count).innerHTML = 
-		"<b>" + command+"</b><br />--&gt;&nbsp;<i>"+evaluate(command)+"</i>";
+		"<b><span onClick='refill(\""+command+"\")'>" + command+"</span></b><br />--&gt;&nbsp;<i>"+evaluate(command)+"</i>";
 	addInputLine();
 }
 

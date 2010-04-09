@@ -1,19 +1,22 @@
-<html> <head><title>JS-Shell</title>
+<html> <head><title>jsShell</title>
 
-<!--
-Thoughts:
+<!--  Thoughts:
 
-The interpreting code might be seperated from what the user can easily do.
-
-Some help?
-
-Some shell like commands to satisfy some of the expectations for the name. (cf unixkcd?)
-
+* The interpreting code might be seperated from what the user can easily do.
+* stuff containing quotes isnt click-selectable
+* Some shell like commands to satisfy some of the expectations for the name. (cf unixkcd?)
+* focus doesnt work for onload and at the end of process
 -->
 
 <script>
 var count = 0;//TODO should not be (easily) overwritable
 var lineWidth = 80;
+var commands = {}
+var results = {}
+
+function help(){
+	return "Well, you can just enter javascript. This is actually it, currently.";
+}
 
 function createInputLine(num){
 	var li = document.createElement("li");
@@ -33,56 +36,69 @@ function createInputLine(num){
 
 function addInputLine(){
 	count++;
-	document.getElementById("cmd_history_list").appendChild(createInputLine(count)) ;
+	document.getElementById("cmd_history_list").appendChild(createInputLine(count));
 }
 
 function evaluate(command){
-	var result = "";
-	try{
-		result += eval(command);
-	}catch(ex){
-		result += "<b>Error</b>: ";
-		for (var fieldName in ex) {
-			result += fieldName;
-			result += ": </i>";
-			result += ex[fieldName];
-			result += " <i>";
-		}
-	}
-	return result;
-}
-
-function refill(command){
-	document.getElementById("inp").value=command;
-}
-
-function process(){
-	var command = document.getElementById("inp").value;
-	document.getElementById("span"+count).innerHTML = 
-		"<b><span onClick='refill(\""+command+"\")'>" + command+"</span></b><br />--&gt;&nbsp;<i>"+evaluate(command)+"</i>";
-	addInputLine();
-}
-
-function showElem(elem){
 	var s = "";
-	if(elem){
-		s += elem;
-		s += ", with members: "; 
-		for (var fieldName in elem) {
-			s += " "+fieldName;
+	try{
+		var dummy = eval(command);
+//		s += "<span onClick='refill(\"showElement(result["+count+"])\")'>"+dummy+"</span>";
+		s += dummy;
+		if(!results[count]){//some function may set it specially.
+			results[count] = dummy;
+		}
+	}catch(ex){
+		s += "<b>Error</b>: ";
+		for (var fieldName in ex) {
+			s += fieldName;
+			s += ": </i>";
+			s += ex[fieldName];
+			s += " <i>";
 		}
 	}
 	return s;
 }
 
-function showElem4id(id){
-	return showElem(document.getElementById(id));
+function refill(command){
+	var inputField = document.getElementById("inp");
+	inputField.value=command;
+	inputField.focus();
+}
+
+function process(){
+	var command = document.getElementById("inp").value;
+	commands[count] = command;
+	document.getElementById("span"+count).innerHTML = 
+//		"<b><span onClick='refill(\""+command+"\")'>" + command + 
+		"<b><span onClick='refill(commands["+count+"])'>" + command + 
+		"</span></b><br />--&gt;&nbsp;<i>"+evaluate(command)+"</i>";
+	addInputLine();
+	document.getElementById("inp").focus();
+}
+
+function showElement(elem){
+	results[count] = elem;
+	var s = "";
+	if(elem){
+		s += elem;
+		s += ", with members: "; 
+		for (var fieldName in elem) {
+			s += " <span onClick='refill(\"results["+count+"]."+fieldName+"\")'>"+fieldName+"</span>";
+		}
+	}
+	return s;
+}
+
+function showElement4id(id){
+	return showElement(document.getElementById(id));
 }
 
 </script>
 
 </head>
 <body onload="javascript:addInputLine()">
+<p><b>jsShell</b></p><p><span onClick="refill('help()')"><tt>help()</tt></span> may help a little bit.</p>
 	<form action="javascript:process()">
 		<ol id="cmd_history_list"></ol>
 	</form>

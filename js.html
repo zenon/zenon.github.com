@@ -14,8 +14,10 @@ var lineWidth = 80;
 var commands = {}
 var results = {}
 
+var shell = {}
+
 function help(){
-	return "Well, you can just enter javascript. This is actually it, currently.";
+	return "Well, you can just enter javascript. This is actually it, currently. showElement(x) or showElement4id('y') are sometimes useful, and often you can click on stuff. If you want to define stuff, there is the object shell that can be enhanced like shell.square = function square(x){return x*x} (use like shell.square(5)). Ah, and lineWidth can be set (currently it is "+lineWidth+").";
 }
 
 function createInputLine(num){

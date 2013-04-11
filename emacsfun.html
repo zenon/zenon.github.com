@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>&lambda; Pic</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="&lambda; Pic"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013/Apr/11 20:19:28 +0200"/>
+<meta name="author" content="github.com/zenon"/>
+<meta name="description" content="A simple function plotting tool for org-mode/babel."/>
+<meta name="keywords" content="org-mode, function-plots, ploticus, emacs-fun, babel"/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+            config: ["MMLorHTML.js"], jax: ["input/TeX"],
+        //  jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "left",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="https://github.com/zenon/ob-emacs-fun"> UP </a>
+ |
+ <a accesskey="H" href="https://github.com/zenon/"> HOME </a>
+</div>
+
+<div id="preamble">
+<link rel='stylesheet' type='text/css' href='org.css' />
+   <script type='text/x-mathjax-config'>
+     MathJax.Hub.Config({TeX: { equationNumbers: {autoNumber: 'all' }}});
+   </script>
+</div>
+
+<div id="content">
+<h1 class="title">&lambda; Pic</h1>
+
+
+
+
+
+$$.$$
+
+
+
+
+<object data='emacsfun.org__figure_1.svg' type='image/svg+xml' 
+    title='Emacs Fun'
+    width='700' height='400'>
+</object>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Overview</a></li>
+<li><a href="#sec-2">2 Example</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Example</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Parameters</a></li>
+<li><a href="#sec-4">4 Installation</a>
+<ul>
+<li><a href="#sec-4-1">4.1 Emacs Configuration</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 Todo</a>
+<ul>
+<li><a href="#sec-5-1">5.1 Should</a></li>
+<li><a href="#sec-5-2">5.2 Maybe</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6 Issues</a></li>
+<li><a href="#sec-7">7 Open Questions</a></li>
+<li><a href="#sec-8">8 Feedback</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Overview</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+For some current notes I needed a simple possibility to insert diagrams of
+\(\mathbb{R} \mapsto \mathbb{R}\) functions. And I needed it fast<sup><a class="footref" name="fnr.1" href="#fn.1">1</a></sup>. For availability reasons, and because it matched my needs, I choose Ploticus<sup><a class="footref" name="fnr.2" href="#fn.2">2</a></sup> and for simplicity reasons Emacs Lisp<sup><a class="footref" name="fnr.3" href="#fn.3">3</a></sup>. Consequently text based, the pictures are embedded as scalable vector graphics (SVG). If you don't know Emacs Lisp or even Lisp at all, this may not be easy going. No knowledge of Ploticus is required.
+</p>
+<p>
+As my experience with Emacs Lisp is small, be aware that the code may be brittle, suboptimal, and - of cource - changing.
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Example</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+
+
+
+<p>
+A diagram is entered into the org file like this
+</p>
+
+
+
+<pre class="example">#+BEGIN_SRC emacs-fun
+((xmax . 10) (ymax . 100) (title . "First Picture")) ;(ref:configuration)
+
+(Square (x) (* x x))    ;(ref:Square)
+(Cube   (x) (* x x x))
+#+END_SRC
+</pre>
+
+
+<p>
+The Lisp code will be shown in the export almost verbatim (i.e. exept the references) as below.
+</p>
+<p>
+Functions, like <a href="#coderef-Square" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-Square');" onmouseout="CodeHighlightOff(this, 'coderef-Square');">Square,</a> that is \(f(x) = x^2\), are given in a lispish way.
+</p>
+<p>
+If there neeed to be some configurations, the must go into the <a href="#coderef-configuration" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-configuration');" onmouseout="CodeHighlightOff(this, 'coderef-configuration');">first form</a> (that can span several lines, btw.).
+</p>
+
+
+
+<pre class="example"><span id="coderef-configuration" class="coderef-off"><span class="linenr">1:  </span>((xmax . 10) (ymin . 0) (ymax . 100) (title . "First Picture"))</span>
+<span class="linenr">2:  </span>
+<span id="coderef-Square" class="coderef-off"><span class="linenr">3:  </span>(Square (x) (* x x))</span>
+<span class="linenr">4:  </span>(Cube   (x) (* x x x))
+</pre>
+
+
+<object data='emacsfun.org__figure_2.svg' type='image/svg+xml' 
+    title='First Picture'
+    width='600' height='400'>
+</object>
+
+<p>
+In case you are new to org mode: To generate HTML from your (or this) org file, press C-c C-e b (The HTML will be opened in the browser immediately. More commands <a href="http://www.gnu.org/software/emacs/manual/html_node/org/HTML-Export-commands.html">here</a>.) 
+</p>
+<p>
+By default the images get a filename constructed from buffer-name with a running number (%buffer-name%__figure_%n%.svg).
+</p>
+<p>
+The name of links into code-lines, btw., are given with parentheses, that is a link coded like ;(ref:hello) is referred to as [ [ (hello) ] ]. (You have to omit the spaces, of course.)
+</p>
+
+
+
+<pre class="example"><span class="linenr">5:  </span>((xmin . -5) (xmax . 5) (ymin . -3) (ymax . 3) (title . "Trigonometric functions"))
+<span class="linenr">6:  </span>
+<span class="linenr">7:  </span>(Sin (x) (sin x))
+<span id="coderef-Cosinus" class="coderef-off"><span class="linenr">8:  </span>(Cos (x) (cos x))</span>
+</pre>
+
+
+<object data='emacsfun.org__figure_3.svg' type='image/svg+xml' 
+    title='Trigonometric functions'
+    width='600' height='400'>
+</object>
+
+<p>
+In case the configuration part of several images is similar, it can be put into the defaults in an emacs-lisp block. :export results is needed for the block to be executed. (The print statement is to inhibit printing.)
+</p>
+
+
+
+
+<pre class="example"><span class="linenr"> 9:  </span>(emacs-fun-defaults '((xmin . 0) (xmax . 5) 
+<span class="linenr">10:  </span>                      (ymin . -1) (ymax . 1)
+<span class="linenr">11:  </span>                      (xlabel . "x") (ylabel . "y")
+<span class="linenr">12:  </span>                      (title . "")))
+</pre>
+
+
+
+<p>
+Now we can be short:
+</p>
+
+
+
+<pre class="example"><span class="linenr">13:  </span>(Sin (x) (sin x))
+</pre>
+
+
+<object data='emacsfun.org__figure_4.svg' type='image/svg+xml' 
+    title=''
+    width='600' height='400'>
+</object>
+
+<p>
+Be aware that side effects of emacs-lisp blocks may change the Emacs VM. So these defaults settings are now in effect for the complete Emacs session.
+</p>
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Example</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<p>The top picture on this page uses some additional features, and its code is given below. (If something is confusing here, the code here and the picture code above may have gotten out of synch. I'm sorry, please look into the source.)
+</p>
+<ul>
+<li>Stubs: To give hand made labels at the axis, an association list called xstubs or ystubs can be used.
+</li>
+<li>Vertical lines are no functions. The current way to draw them is a bit contrived and not very flexible: we have to give xstubs, and every xstub generates a vertical line. 
+</li>
+<li>The size of the picture can be given like this: (width . 700) (height . 400)
+</li>
+</ul>
+
+
+
+
+
+<pre class="example">#+BEGIN_SRC emacs-fun :exports results
+((title . "Emacs Fun")
+ (xmax . 1100) (ymax . 1100) (xlabel . "Quantity")
+ (ystubs . ((1000 . "1000") (600 . "p*")))
+ (xstubs . ((400 . "q*")))
+ (width . 700) (height . 400))
+
+(Demand (x) (- 1000 x))
+(Supply (x) (* 30 (sqrt x)))
+(Market-Price (x) 600)
+#+END_SRC
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Parameters</h2>
+<div class="outline-text-2" id="text-3">
+
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Name</th><th scope="col" class="left">Default</th><th scope="col" class="left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">title</td><td class="left">"Picture"</td><td class="left">Title shown in the picture.</td></tr>
+<tr><td class="left">xmin</td><td class="left">0</td><td class="left">Minimal value shown at x-Axis</td></tr>
+<tr><td class="left">xmax</td><td class="left">500</td><td class="left">Maximal value shown at x-Axis</td></tr>
+<tr><td class="left">ymin</td><td class="left">0</td><td class="left">Minimal value shown at y-Axis</td></tr>
+<tr><td class="left">ymax</td><td class="left">500</td><td class="left">Maximal value shown at y-Axis</td></tr>
+<tr><td class="left">xlabel</td><td class="left">"x"</td><td class="left">Label of x-Axis</td></tr>
+<tr><td class="left">ylabel</td><td class="left">"y"</td><td class="left">Label of y-Axis</td></tr>
+<tr><td class="left">width</td><td class="left">600</td><td class="left">With of the embedded picture</td></tr>
+<tr><td class="left">height</td><td class="left">400</td><td class="left">Height of the embedded picture</td></tr>
+<tr><td class="left">xstubs</td><td class="left">nil</td><td class="left">Stubs, see Example above</td></tr>
+<tr><td class="left">ystubs</td><td class="left">nil</td><td class="left">Stubs, see Example above</td></tr>
+</tbody>
+</table>
+
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Installation</h2>
+<div class="outline-text-2" id="text-4">
+
+<ul>
+<li>Get Emacs 24<sup><a class="footref" name="fnr.3.2" href="#fn.3">3</a></sup>.
+</li>
+<li>Get Ploticus<sup><a class="footref" name="fnr.2.2" href="#fn.2">2</a></sup>
+</li>
+<li>Put ob-emacs-fun.el into the Lisp directory of org mode. A usual place is the lisp/org subdirectory of your Emacs installation directory. You should already see files like ob-emacs-lisp.el there.
+</li>
+<li>Adjust your emacs configuration to enable Emacs Fun, as described below.
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Emacs Configuration</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+<p>
+I have the following sniplets in my .emacs to get this running. In order of occurrence.
+</p>
+<ul>
+<li id="sec-4-1-1">Usage of \(\TeX\) via MathJax:<br/>
+
+
+
+
+<pre class="example">(setq org-export-html-mathjax-options 
+      '((path "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")
+        (scale "100")
+        (align "left")
+        (indent "2em")
+        (mathml t)))
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-4-1-2">Style and MathJax<br/>
+
+<p>
+(See TODO, especially the line numbering doesn't work.)
+</p>
+
+
+
+<pre class="example">(setq org-export-html-preamble
+  "&lt;link rel='stylesheet' type='text/css' href='org.css' /&gt;
+   &lt;script type='text/x-mathjax-config'&gt;
+     MathJax.Hub.Config({TeX: { equationNumbers: {autoNumber: 'all' }}});
+   &lt;/script&gt;")
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-4-1-3">Allow<br/>
+
+<p>
+This allows emacs-fun and emacs-lisp blocks to ALWAYS be executed without asking. So take care if you have files from people you should not trust. Emacs is no sandbox.
+</p>
+
+
+
+<pre class="example">(defun my-org-confirm-babel-evaluate (lang body)
+  (not (or (string= lang "emacs-fun")
+           (string= lang "emacs-lisp"))))
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-4-1-4">Load<br/>
+
+
+
+
+<pre class="example">(require 'ob-emacs-fun)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-fun . t)))
+</pre>
+
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Todo</h2>
+<div class="outline-text-2" id="text-5">
+
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Should</h3>
+<div class="outline-text-3" id="text-5-1">
+
+<ul>
+<li>Rename short named variables, like default. They must get names with lower probability of interference.
+</li>
+<li>Is there a more idiomatic way to set the style for org mode HTML export?
+</li>
+<li>MathJax equation numbers don't work.
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Maybe</h3>
+<div class="outline-text-3" id="text-5-2">
+
+<ul>
+<li>Usage of org-mode postamble might be enhanced (Currently, org.css makes it invisible.):
+<ul>
+<li>can author be set from .emacs
+</li>
+<li>time stamp language shall be English
+</li>
+</ul>
+
+</li>
+<li>The formula (in \(\TeX\)) might be generated from code too. In that case, if a function gets a ;(ref:..) - the (latex-)formula should get the same marker. (Hm. A line doesn't generally correspond to a function.)
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Issues</h2>
+<div class="outline-text-2" id="text-6">
+
+<ul>
+<li>Among the strengts of babel is the possibility to pass data from block to block. I don't do this here, thus abandoning the possibility. How could we use it?
+</li>
+<li>I'm somehow not comfortable with all exported files being generated into my org directory.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Open Questions</h2>
+<div class="outline-text-2" id="text-7">
+
+
+<ul>
+<li>I want to know the number of the code block (blocks enumerated as sequence). Currently I use a counter and an advise to org-export.
+</li>
+<li>Do I have access to the name of the code block, if there is any?
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Feedback</h2>
+<div class="outline-text-2" id="text-8">
+
+
+<p>
+Please use the Github issue tracking system.
+</p>
+
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn.1" href="#fnr.1">1</a></sup> As you might suspect from the example picture, it was for an economics lecture. I highly recommend <a href="https://www.coursera.org/course/econ1scientists">Principles of Economics for Scientists</a> by Antonio Rangel, a compact one semester introduction into micro economics.
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn.2" href="#fnr.2">2</a></sup> <a href="http://ploticus.sourceforge.net/">http://ploticus.sourceforge.net/</a> Just install it. Ploticus must be in the path.
+</p>
+
+
+<p class="footnote"><sup><a class="footnum" name="fn.3" href="#fnr.3">3</a></sup> I tested in Emacs 24.1.1 and Emacs 24.2
+</p></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2013/Apr/11 20:19:28 +0200</p>
+<p class="author">Author: github.com/zenon</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
